@@ -18,7 +18,7 @@ class GroupSerializer(serializers.HyperlinkedModelSerializer):
 class CustomerSerializer(serializers.HyperlinkedModelSerializer):
     class Meta:
         model = Customer
-        fields = ['first_name', 'last_name', 'email', 'birth_date']
+        fields = ['id', 'first_name', 'last_name', 'email', 'birth_date']
 
 
 class AccountSerializer(serializers.HyperlinkedModelSerializer):
