@@ -3,7 +3,7 @@ from django.http import HttpResponse
 from .models import Customer, Account
 from django.contrib.auth.models import User, Group
 
-from rest_framework import viewsets
+from rest_framework import viewsets, permissions
 
 from .serializers import UserSerializer, GroupSerializer, CustomerSerializer, AccountSerializer
 
@@ -27,18 +27,21 @@ def show_customer(request, cust_id):
 class UserViewSet(viewsets.ModelViewSet):
     queryset = User.objects.all().order_by('-date_joined')
     serializer_class = UserSerializer
+    permission_classes = [permissions.IsAuthenticated]
 
 
 class GroupViewSet(viewsets.ModelViewSet):
     queryset = Group.objects.all()
     serializer_class = GroupSerializer
+    permission_classes = [permissions.IsAuthenticated]
 
 
 class CustomerViewSet(viewsets.ModelViewSet):
     queryset = Customer.objects.all()
     serializer_class = CustomerSerializer
-
+    permission_classes = [permissions.IsAuthenticated]
 
 class AccountViewSet(viewsets.ModelViewSet):
     queryset = Account.objects.all()
     serializer_class = AccountSerializer
+    permission_classes = [permissions.IsAuthenticated]
